@@ -23,7 +23,7 @@ namespace Timesheet.Tests
             var timelog = new TimeLog
             {
                 Date = new DateTime(),
-                workingHours = 1,
+                WorkingHours = 1,
                 LastName = expectedLastName,
                 Comment = Guid.NewGuid().ToString()
             };
@@ -53,7 +53,7 @@ namespace Timesheet.Tests
             var timelog = new TimeLog
             {
                 Date = new DateTime(),
-                workingHours = hours,
+                WorkingHours = hours,
                 LastName = lastName,
                 Comment = Guid.NewGuid().ToString()
             };

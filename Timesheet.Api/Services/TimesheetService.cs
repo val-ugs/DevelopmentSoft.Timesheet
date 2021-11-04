@@ -7,11 +7,11 @@ using static Timesheet.Api.Services.AuthService;
 
 namespace Timesheet.Api.Services
 {
-    public class TimesheetService
+    public class TimesheetService : ITimesheetService
     {
         public bool TrackTime(TimeLog timelog)
         {
-            bool isValid = timelog.workingHours > 0 && timelog.workingHours <= 24 && !string.IsNullOrWhiteSpace(timelog.LastName);
+            bool isValid = timelog.WorkingHours > 0 && timelog.WorkingHours <= 24 && !string.IsNullOrWhiteSpace(timelog.LastName);
 
             isValid = isValid && UserSession.Sessions.Contains(timelog.LastName);
 
@@ -19,7 +19,7 @@ namespace Timesheet.Api.Services
             {
                 return false;
             }
-            
+
             Timesheets.TimeLogs.Add(timelog);
 
             return true;
