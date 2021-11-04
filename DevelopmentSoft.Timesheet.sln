@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Api", "Timesheet.Api\Timesheet.Api.csproj", "{339C6DD2-B138-4B5C-AE19-91192DBEF690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Tests", "Timesheet.Tests\Timesheet.Tests.csproj", "{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{339C6DD2-B138-4B5C-AE19-91192DBEF690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339C6DD2-B138-4B5C-AE19-91192DBEF690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339C6DD2-B138-4B5C-AE19-91192DBEF690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339C6DD2-B138-4B5C-AE19-91192DBEF690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49CF273D-B1C6-4DC6-9379-5582E6A48FE7}
+	EndGlobalSection
+EndGlobal
