@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Api.ResourceModels;
-using Timesheet.Api.Services;
+using Timesheet.Application.Services;
+using Timesheet.Domain;
 
 namespace Timesheet.Api.Controllers
 {

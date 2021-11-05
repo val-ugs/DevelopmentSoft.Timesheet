@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Timesheet.Api.Models;
-using Timesheet.Api.Services;
-using static Timesheet.Api.Services.AuthService;
+using Timesheet.Domain.Models;
+using Timesheet.Application.Services;
+using static Timesheet.Application.Services.AuthService;
 
 namespace Timesheet.Tests
 {
