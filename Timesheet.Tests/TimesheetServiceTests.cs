@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Timesheet.Domain.Models;
 using Timesheet.Application.Services;
 using static Timesheet.Application.Services.AuthService;
+using Moq;
+using Timesheet.Domain;
 
 namespace Timesheet.Tests
 {
@@ -27,13 +29,18 @@ namespace Timesheet.Tests
                 LastName = expectedLastName,
                 Comment = Guid.NewGuid().ToString()
             };
+            var timesheetRepositoryMock = new Mock<ITimesheetRepository>();
+            timesheetRepositoryMock
+                .Setup(x => x.Add(timelog))
+                .Verifiable();
 
-            var service = new TimesheetService();
+            var service = new TimesheetService(timesheetRepositoryMock.Object);
 
             // act
             var result = service.TrackTime(timelog);
 
             // assert
+            timesheetRepositoryMock.Verify(x => x.Add(timelog), Times.Once);
             Assert.IsTrue(result);
         }
 
@@ -58,9 +65,15 @@ namespace Timesheet.Tests
                 Comment = Guid.NewGuid().ToString()
             };
 
-            var service = new TimesheetService();
+            var timesheetRepositoryMock = new Mock<ITimesheetRepository>();
+            timesheetRepositoryMock
+                .Setup(x => x.Add(timelog))
+                .Verifiable();
+
+            var service = new TimesheetService(timesheetRepositoryMock.Object);
 
             // act
+            timesheetRepositoryMock.Verify(x => x.Add(timelog), Times.Never);
             var result = service.TrackTime(timelog);
 
             // assert

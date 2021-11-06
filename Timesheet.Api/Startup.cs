@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Application.Services;
+using Timesheet.DataAccess.CSV;
 using Timesheet.Domain;
 
 namespace Timesheet.Api
@@ -28,6 +29,7 @@ namespace Timesheet.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<ITimesheetRepository, TimesheetRepository>();
             services.AddTransient<ITimesheetService, TimesheetService>();
 
             services.AddControllers();

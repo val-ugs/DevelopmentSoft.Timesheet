@@ -10,6 +10,13 @@ namespace Timesheet.Application.Services
 {
     public class TimesheetService : ITimesheetService
     {
+        private readonly ITimesheetRepository _timesheetRepository;
+
+        public TimesheetService(ITimesheetRepository timesheetRepository)
+        {
+            _timesheetRepository = timesheetRepository;
+        }
+
         public bool TrackTime(TimeLog timelog)
         {
             bool isValid = timelog.WorkingHours > 0 && timelog.WorkingHours <= 24 && !string.IsNullOrWhiteSpace(timelog.LastName);
@@ -21,15 +28,9 @@ namespace Timesheet.Application.Services
                 return false;
             }
 
-            Timesheets.TimeLogs.Add(timelog);
+            _timesheetRepository.Add(timelog);
 
             return true;
         }
-    }
-
-    public static class Timesheets
-    {
-
-        public static List<TimeLog> TimeLogs { get; set; } = new List<TimeLog>();
     }
 }
