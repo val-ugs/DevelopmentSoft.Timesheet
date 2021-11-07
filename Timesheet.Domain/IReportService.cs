@@ -7,10 +7,8 @@ using Timesheet.Domain.Models;
 
 namespace Timesheet.Domain
 {
-    public interface IEmployeeRepository
+    public interface IReportService
     {
-        StaffEmployee GetEmployee(string lastName);
-
-        void AddEmployee(StaffEmployee staffEmployee);
+        public EmployeeReport GetEmployeeReport(string lastName);
     }
 }

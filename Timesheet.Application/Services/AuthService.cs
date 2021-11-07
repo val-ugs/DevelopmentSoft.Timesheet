@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Domain;
+using Timesheet.Domain.Models;
 
 namespace Timesheet.Application.Services
 {
     public class AuthService : IAuthService
     {
-        public AuthService()
-        {
-            Employees = new List<string>
-            {
-                "Иванов",
-                "Петров",
-                "Сидоров"
-            };
-        }
+        private IEmployeeRepository _employeeRepository;
 
-        public List<string> Employees { get; private set; }
+        public AuthService(IEmployeeRepository employeeRepository)
+        {
+            _employeeRepository = employeeRepository;
+        }
 
         public bool Login(string lastName)
         {
@@ -27,12 +23,13 @@ namespace Timesheet.Application.Services
                 return false;
             }
 
-            var isEmployeeExist = Employees.Contains(lastName);
+            StaffEmployee staffEmployee = _employeeRepository.GetEmployee(lastName);
+            var isEmployeeExist = staffEmployee != null ? true : false;
 
             if (isEmployeeExist)
                 UserSession.Sessions.Add(lastName);
 
-            return Employees.Contains(lastName);
+            return isEmployeeExist;
         }
 
         public static class UserSession
