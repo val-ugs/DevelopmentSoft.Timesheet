@@ -35,6 +35,8 @@ namespace Timesheet.Api
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IReportService, ReportService>();
 
+            services.AddSingleton(x => new CsvSettings(';', "..\\Timesheet.DataAccess.CSV\\Data"));
+
             services.AddControllers();
         }
 

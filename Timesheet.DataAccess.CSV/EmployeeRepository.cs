@@ -11,19 +11,25 @@ namespace Timesheet.DataAccess.CSV
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private const char DELIMETER = ';';
-        private const string PATH = "..\\Timesheet.DataAccess.CSV\\Data\\employees.csv";
+        private readonly char _delimeter;
+        private readonly string _path;
+
+        public EmployeeRepository(CsvSettings csvSettings)
+        {
+            _delimeter = csvSettings.Delimeter;
+            _path = csvSettings.Path + "\\employees.csv";
+        }
 
         public void AddEmployee(StaffEmployee staffEmployee)
         {
-            var dataRow = $"{staffEmployee.LastName}{DELIMETER}" +
+            var dataRow = $"{staffEmployee.LastName}{_delimeter}" +
                 $"{staffEmployee.Salary}\n";
-            File.AppendAllText(PATH, dataRow);
+            File.AppendAllText(_path, dataRow);
         }
 
         public StaffEmployee GetEmployee(string lastName)
         {
-            var data = File.ReadAllText(PATH);
+            var data = File.ReadAllText(_path);
             var dataRows = data.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             StaffEmployee staffEmployee = null;
 
@@ -31,12 +37,12 @@ namespace Timesheet.DataAccess.CSV
             {
                 if (dataRow.Contains(lastName))
                 {
-                    var dataMembers = dataRow.Split(DELIMETER);
+                    var dataMembers = dataRow.Split(_delimeter);
                     staffEmployee = new StaffEmployee()
                     {
                         LastName = dataMembers[0],
                         Salary = decimal.TryParse(dataMembers[1], out var salary) ? salary : 0
-                    }
+                    };
                     break;
                 }
             }
