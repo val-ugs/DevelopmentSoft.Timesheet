@@ -44,11 +44,10 @@ namespace Timesheet.Tests
             Assert.IsTrue(result);
         }
 
-        [Test]
-        public void Login_InvokeLoginTwiceForOneLastName_ShouldReturnTrue()
+        [TestCase("Иванов")]
+        public void Login_InvokeLoginTwiceForOneLastName_ShouldReturnTrue(string lastName)
         {
             // arrange
-            var lastName = "Иванов";
             var employeeRepositoryMock = new Mock<IEmployeeRepository>();
             employeeRepositoryMock
                 .Setup(x => x.GetEmployee(It.Is<string>(y => y == lastName)))
@@ -74,15 +73,12 @@ namespace Timesheet.Tests
             Assert.IsTrue(result);
         }
 
-        [TestCase("")]
         [TestCase(null)]
+        [TestCase("")]
         public void Login_NotValidArgument_ShouldReturnFalse(string lastName)
         {
             // arrange
             var employeeRepositoryMock = new Mock<IEmployeeRepository>();
-            employeeRepositoryMock
-                .Setup(x => x.GetEmployee(lastName))
-                .Returns(() => null);
 
             var service = new AuthService(employeeRepositoryMock.Object);
 
@@ -93,7 +89,6 @@ namespace Timesheet.Tests
             employeeRepositoryMock.Verify(x => x.GetEmployee(lastName), Times.Never);
 
             Assert.IsFalse(result);
-            Assert.IsEmpty(UserSession.Sessions);
             Assert.IsTrue(UserSession.Sessions.Contains(lastName) == false);
         }
 

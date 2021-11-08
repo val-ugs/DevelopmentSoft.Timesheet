@@ -24,7 +24,7 @@ namespace Timesheet.Application.Services
             }
 
             StaffEmployee staffEmployee = _employeeRepository.GetEmployee(lastName);
-            var isEmployeeExist = staffEmployee != null ? true : false;
+            var isEmployeeExist = staffEmployee != null;
 
             if (isEmployeeExist)
                 UserSession.Sessions.Add(lastName);

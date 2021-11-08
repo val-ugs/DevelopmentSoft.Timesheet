@@ -28,10 +28,11 @@ namespace Timesheet.DataAccess.CSV
         public TimeLog[] GetTimeLogs(string lastName)
         {
             
-            var data = File.ReadAllText("timesheet.csv");
+            var data = File.ReadAllText(PATH);
+            var dataRows = data.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             var timeLogs = new List<TimeLog>();
 
-            foreach (var dataRow in data.Split("\n"))
+            foreach (var dataRow in dataRows)
             {
                 var timeLog = new TimeLog();
                 
