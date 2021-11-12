@@ -20,9 +20,9 @@ namespace Timesheet.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<bool> Add(StaffEmployee staffEmployee)
+        public ActionResult<bool> Add(Employee employee)
         {
-            return Ok(_employeeService.AddEmployee(staffEmployee));
+            return Ok(_employeeService.AddEmployee(employee));
         }
     }
 }

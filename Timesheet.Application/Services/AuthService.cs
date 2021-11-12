@@ -9,7 +9,7 @@ namespace Timesheet.Application.Services
 {
     public class AuthService : IAuthService
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
         public AuthService(IEmployeeRepository employeeRepository)
         {
@@ -23,8 +23,8 @@ namespace Timesheet.Application.Services
                 return false;
             }
 
-            StaffEmployee staffEmployee = _employeeRepository.GetEmployee(lastName);
-            var isEmployeeExist = staffEmployee != null;
+            Employee employee = _employeeRepository.GetEmployee(lastName);
+            var isEmployeeExist = employee != null;
 
             if (isEmployeeExist)
                 UserSession.Sessions.Add(lastName);
