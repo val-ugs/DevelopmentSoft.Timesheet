@@ -11,24 +11,45 @@ namespace Timesheet.Application.Services
     public class TimesheetService : ITimesheetService
     {
         private readonly ITimesheetRepository _timesheetRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public TimesheetService(ITimesheetRepository timesheetRepository)
+        public TimesheetService(ITimesheetRepository timesheetRepository, IEmployeeRepository employeeRepository)
         {
             _timesheetRepository = timesheetRepository;
+            _employeeRepository = employeeRepository;
         }
 
-        public bool TrackTime(TimeLog timelog)
+        public bool TrackTime(TimeLog timeLog, string lastName)
         {
-            bool isValid = timelog.WorkingHours > 0 && timelog.WorkingHours <= 24 && !string.IsNullOrWhiteSpace(timelog.LastName);
+            bool isValid = timeLog.WorkingHours > 0
+                && timeLog.WorkingHours <= 24
+                && !string.IsNullOrWhiteSpace(timeLog.LastName);
 
-            isValid = isValid && UserSession.Sessions.Contains(timelog.LastName);
-
-            if (!isValid)
+            var employee = _employeeRepository.GetEmployee(lastName);
+            //isValid = isValid && UserSession.Sessions.Contains(timeLog.LastName);
+            
+            if (!isValid || employee == null)
             {
                 return false;
             }
 
-            _timesheetRepository.Add(timelog);
+            if (employee is FreelancerEmployee)
+            {
+                if (DateTime.Now.AddDays(-2) > timeLog.Date)
+                {
+                    return false;
+                }
+            }
+
+            if (employee is FreelancerEmployee || employee is StaffEmployee)
+            {
+                if (lastName != timeLog.LastName)
+                {
+                    return false;
+                }
+            }
+
+            _timesheetRepository.Add(timeLog);
 
             return true;
         }
