@@ -54,6 +54,8 @@ namespace Timesheet.Api
 
             app.UseAuthorization();
 
+            app.UseMiddleware<JwtAuthMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
