@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timesheet.Api", "Timesheet.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timesheet.Tests", "Timesheet.Tests\Timesheet.Tests.csproj", "{AC69A856-5EE9-4C2A-BE37-9F9E975677AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Domain", "Timesheet.Domain\Timesheet.Domain.csproj", "{18C9E77C-4DC0-4BD1-AF59-982BBE093F41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timesheet.Domain", "Timesheet.Domain\Timesheet.Domain.csproj", "{18C9E77C-4DC0-4BD1-AF59-982BBE093F41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Application", "Timesheet.Application\Timesheet.Application.csproj", "{7B817366-D269-45E7-9E27-8E42765CCF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timesheet.BussinessLogic", "Timesheet.Application\Timesheet.BussinessLogic.csproj", "{7B817366-D269-45E7-9E27-8E42765CCF86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.DataAccess.CSV", "Timesheet.DataAccess.CSV\Timesheet.DataAccess.CSV.csproj", "{DBEB58DE-739A-4141-887C-464C1F618AAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timesheet.DataAccess.CSV", "Timesheet.DataAccess.CSV\Timesheet.DataAccess.CSV.csproj", "{DBEB58DE-739A-4141-887C-464C1F618AAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubTests", "GitHubTests\GitHubTests.csproj", "{B7245FB8-EF0D-46FD-AB9A-6BF42EE72E50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Integrations.GitHub", "Timesheet.Integrations.GitHub\Timesheet.Integrations.GitHub.csproj", "{BC6A7123-7325-46B3-96DB-6F3A240A2185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{DBEB58DE-739A-4141-887C-464C1F618AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBEB58DE-739A-4141-887C-464C1F618AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBEB58DE-739A-4141-887C-464C1F618AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7245FB8-EF0D-46FD-AB9A-6BF42EE72E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7245FB8-EF0D-46FD-AB9A-6BF42EE72E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7245FB8-EF0D-46FD-AB9A-6BF42EE72E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7245FB8-EF0D-46FD-AB9A-6BF42EE72E50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6A7123-7325-46B3-96DB-6F3A240A2185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6A7123-7325-46B3-96DB-6F3A240A2185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6A7123-7325-46B3-96DB-6F3A240A2185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6A7123-7325-46B3-96DB-6F3A240A2185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

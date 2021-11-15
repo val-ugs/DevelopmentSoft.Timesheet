@@ -13,9 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Api.Models;
-using Timesheet.Application.Services;
+using Timesheet.BussinessLogic.Services;
 using Timesheet.DataAccess.CSV;
 using Timesheet.Domain;
+using Timesheet.Integrations.GitHub;
 
 namespace Timesheet.Api
 {
@@ -39,6 +40,9 @@ namespace Timesheet.Api
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<IIssuesService, IssuesService>();
+
+            services.AddTransient<IIssuesClient>(x => new IssuesClient("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"));
 
             services.AddSingleton(x => new CsvSettings(';', "..\\Timesheet.DataAccess.CSV\\Data"));
 
