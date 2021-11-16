@@ -10,8 +10,8 @@ using Timesheet.DataAccess.MSSQL;
 namespace Timesheet.DataAccess.MSSQL.Migrations
 {
     [DbContext(typeof(TimesheetContext))]
-    [Migration("20211116110405_AddRelationWithTimelog")]
-    partial class AddRelationWithTimelog
+    [Migration("20211116135059_AddEmployeeSeedData")]
+    partial class AddEmployeeSeedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,18 +28,45 @@ namespace Timesheet.DataAccess.MSSQL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal?>("Bonus")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bonus = 20000m,
+                            LastName = "Иванов",
+                            Position = 0,
+                            Salary = 200000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LastName = "Сидоров",
+                            Position = 2,
+                            Salary = 120000m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LastName = "Петров",
+                            Position = 1,
+                            Salary = 1000m
+                        });
                 });
 
             modelBuilder.Entity("Timesheet.DataAccess.MSSQL.Entities.TimeLog", b =>

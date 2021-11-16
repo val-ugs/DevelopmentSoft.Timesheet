@@ -22,7 +22,7 @@ namespace Timesheet.Tests
             // arrange
             var employeeRepositoryMock = new Mock<IEmployeeRepository>();
             employeeRepositoryMock
-                .Setup(x => x.GetEmployee(It.Is<string>(y => y == lastName)))
+                .Setup(x => x.Get(It.Is<string>(y => y == lastName)))
                 .Returns(() => new StaffEmployee(lastName, 70000))
                 .Verifiable();
 
@@ -46,7 +46,7 @@ namespace Timesheet.Tests
             // arrange
             var employeeRepositoryMock = new Mock<IEmployeeRepository>();
             employeeRepositoryMock
-                .Setup(x => x.GetEmployee(It.Is<string>(y => y == lastName)))
+                .Setup(x => x.Get(It.Is<string>(y => y == lastName)))
                 .Returns(() => new StaffEmployee(lastName, 70000))
                 .Verifiable();
 
@@ -78,7 +78,7 @@ namespace Timesheet.Tests
             var result = service.Login(lastName);
 
             // assert
-            employeeRepositoryMock.Verify(x => x.GetEmployee(lastName), Times.Never);
+            employeeRepositoryMock.Verify(x => x.Get(lastName), Times.Never);
 
             Assert.False(string.IsNullOrWhiteSpace(result));
             Assert.IsTrue(UserSession.Sessions.Contains(lastName) == false);
@@ -90,7 +90,7 @@ namespace Timesheet.Tests
             // arrange
             var employeeRepositoryMock = new Mock<IEmployeeRepository>();
             employeeRepositoryMock
-                .Setup(x => x.GetEmployee(lastName))
+                .Setup(x => x.Get(lastName))
                 .Returns(() => null);
 
             var service = new AuthService(employeeRepositoryMock.Object);
@@ -99,7 +99,7 @@ namespace Timesheet.Tests
             var result = service.Login(lastName);
 
             // assert
-            employeeRepositoryMock.Verify(x => x.GetEmployee(lastName), Times.Once);
+            employeeRepositoryMock.Verify(x => x.Get(lastName), Times.Once);
 
             Assert.False(string.IsNullOrWhiteSpace(result));
             Assert.IsTrue(UserSession.Sessions.Contains(lastName) == false);
