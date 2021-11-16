@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 using Timesheet.Api.Models;
 using Timesheet.BussinessLogic.Services;
 using Timesheet.DataAccess.CSV;
+using Timesheet.DataAccess.MSSQL;
 using Timesheet.Domain;
 using Timesheet.Integrations.GitHub;
 
@@ -45,6 +47,9 @@ namespace Timesheet.Api
             services.AddTransient<IIssuesClient>(x => new IssuesClient("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"));
 
             services.AddSingleton(x => new CsvSettings(';', "..\\Timesheet.DataAccess.CSV\\Data"));
+
+            services.AddDbContext<TimesheetContext>(x => x.UseSqlServer(Configuration.GetConnectionString("TimesheetContext")));
+
 
             services.AddControllers().AddFluentValidation();
             services.AddControllers();
