@@ -21,12 +21,12 @@ namespace Timesheet.Integrations.GitHub
             _gitHubClient = client;
         }
 
-        public async Task<Issues[]> Get(string login)
+        public async Task<Issues[]> Get(string managerLogin, string project)
         {
             var projects = await _gitHubClient
                 .Repository
                 .Project
-                .GetAllForRepository("val-ugs", "DevelopmentSoft.Timesheet");
+                .GetAllForRepository(managerLogin, "project name");
 
             var timesheetProject = projects.FirstOrDefault();
 
