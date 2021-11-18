@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Api.Models;
+using Timesheet.Api.ResourceModels;
 using Timesheet.BussinessLogic.Services;
 using Timesheet.DataAccess.CSV;
 using Timesheet.DataAccess.MSSQL;
@@ -37,6 +38,7 @@ namespace Timesheet.Api
             services.AddAutoMapper(typeof(ApiMappingProfile), typeof(DataAccessMappingProfile));
 
             services.AddTransient<IValidator<CreateTimeLogRequest>, TimeLogFluentValidator>();
+            services.AddTransient<IValidator<LoginRequest>, LoginRequestFluentValidator>();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ITimesheetRepository, DataAccess.CSV.TimesheetRepository>();
