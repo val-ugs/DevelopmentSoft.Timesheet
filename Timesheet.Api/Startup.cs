@@ -16,8 +16,9 @@ using System.Threading.Tasks;
 using Timesheet.Api.Models;
 using Timesheet.Api.ResourceModels;
 using Timesheet.BussinessLogic.Services;
-using Timesheet.DataAccess.CSV;
+//using Timesheet.DataAccess.CSV;
 using Timesheet.DataAccess.MSSQL;
+using Timesheet.DataAccess.MSSQL.Repositories;
 using Timesheet.Domain;
 using Timesheet.Integrations.GitHub;
 
@@ -39,19 +40,21 @@ namespace Timesheet.Api
 
             services.AddTransient<IValidator<CreateTimeLogRequest>, TimeLogFluentValidator>();
             services.AddTransient<IValidator<LoginRequest>, LoginRequestFluentValidator>();
+            
+            //services.AddTransient<ITimesheetRepository, DataAccess.CSV.TimesheetRepository>();
+            services.AddTransient<ITimesheetRepository, TimesheetRepository>();
+            //services.AddTransient<IEmployeeRepository, DataAccess.CSV.EmployeeRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<ITimesheetRepository, DataAccess.CSV.TimesheetRepository>();
             services.AddTransient<ITimesheetService, TimesheetService>();
-            services.AddTransient<IEmployeeRepository, DataAccess.CSV.EmployeeRepository>();
-            services.AddTransient<IEmployeeRepository, DataAccess.MSSQL.Repositories.EmployeeRepository>();
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IIssuesService, IssuesService>();
 
             services.AddTransient<IIssuesClient>(x => new IssuesClient("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"));
 
-            services.AddSingleton(x => new CsvSettings(';', "..\\Timesheet.DataAccess.CSV\\Data"));
+            //services.AddSingleton(x => new CsvSettings(';', "..\\Timesheet.DataAccess.CSV\\Data"));
 
             services.AddOptions<JwtConfig>()
                 .Bind(Configuration.GetSection("JwtConfig"));
