@@ -9,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Timesheet.Api.Models;
@@ -62,6 +64,17 @@ namespace Timesheet.Api
             services.AddDbContext<TimesheetContext>(x =>
                 x.UseSqlServer(Configuration.GetConnectionString("TimesheetContext")));
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Timesheet API", Version = "v1" });
+                c.SwaggerDoc("v2", new OpenApiInfo { Title = "Timesheet API", Version = "v2" });
+
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Timesheet.Api.xml");
+                c.IncludeXmlComments(filePath);
+            });
+
+            services.AddOpenApiDocument();
+
             services.AddControllers().AddFluentValidation();
             services.AddControllers();
         }
@@ -73,6 +86,15 @@ namespace Timesheet.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Timesheet V1");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "My Timesheet V2");
+            });
+
+            app.UseOpenApi(); // serve documents (same as app.UseSwagger())
+            app.UseReDoc(); // serve ReDoc UI
 
             app.UseHttpsRedirection();
 
