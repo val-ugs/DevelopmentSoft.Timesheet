@@ -38,6 +38,8 @@ namespace Timesheet.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
+
             services.AddAutoMapper(typeof(ApiMappingProfile), typeof(DataAccessMappingProfile));
 
             services.AddTransient<IValidator<CreateTimeLogRequest>, TimeLogFluentValidator>();
@@ -77,6 +79,11 @@ namespace Timesheet.Api
 
             services.AddControllers().AddFluentValidation();
             services.AddControllers();
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            var logger = serviceProvider.GetService<ILogger<ControllerBase>>();
+            services.AddSingleton(typeof(ILogger), logger);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
