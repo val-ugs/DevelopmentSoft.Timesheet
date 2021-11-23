@@ -1,0 +1,32 @@
+2021-11-23 22:42:18.826 +03:00 [INF] Now listening on: https://localhost:5001
+2021-11-23 22:42:19.453 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - -
+2021-11-23 22:42:50.035 +03:00 [INF] Now listening on: http://localhost:5000
+2021-11-23 22:42:50.036 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-23 22:42:50.037 +03:00 [INF] Hosting environment: Development
+2021-11-23 22:42:50.038 +03:00 [INF] Content root path: C:\Users\Valentin\Desktop\Programming\C#DotNet\ASP.NET TestApp\DevelopmentSoft.Timesheet\Timesheet.Api
+2021-11-23 22:42:50.157 +03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - - - 200 - text/html;charset=utf-8 30707.5244ms
+2021-11-23 22:42:50.412 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - -
+2021-11-23 22:42:51.922 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1501.9562 ms
+2021-11-23 22:42:51.946 +03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - - - 200 - application/json;+charset=utf-8 1533.7613ms
+FILE: 2021-11-23 22:45:00.835 +03:00 [INF] Now listening on: https://localhost:5001
+FILE: 2021-11-23 22:45:00.918 +03:00 [INF] Now listening on: http://localhost:5000
+FILE: 2021-11-23 22:45:00.920 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+FILE: 2021-11-23 22:45:00.924 +03:00 [INF] Hosting environment: Development
+FILE: 2021-11-23 22:45:00.925 +03:00 [INF] Content root path: C:\Users\Valentin\Desktop\Programming\C#DotNet\ASP.NET TestApp\DevelopmentSoft.Timesheet\Timesheet.Api
+FILE: 2021-11-23 22:45:01.423 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - -
+FILE: 2021-11-23 22:45:01.564 +03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - - - 200 - text/html;charset=utf-8 144.7335ms
+FILE: 2021-11-23 22:45:01.846 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - -
+FILE: 2021-11-23 22:45:02.973 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1118.6604 ms
+FILE: 2021-11-23 22:45:02.978 +03:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - - - 200 - application/json;+charset=utf-8 1131.5325ms
+FILE: 2021-11-23 22:45:06.594 +03:00 [INF] Application is shutting down...
+FILE: 2021-11-23 22:49:54.304 +03:00 [INF  ] Now listening on: https://localhost:5001
+FILE: 2021-11-23 22:49:54.340 +03:00 [INF  ] Now listening on: http://localhost:5000
+FILE: 2021-11-23 22:49:54.341 +03:00 [INF  ] Application started. Press Ctrl+C to shut down.
+FILE: 2021-11-23 22:49:54.342 +03:00 [INF  ] Hosting environment: Development
+FILE: 2021-11-23 22:49:54.343 +03:00 [INF  ] Content root path: C:\Users\Valentin\Desktop\Programming\C#DotNet\ASP.NET TestApp\DevelopmentSoft.Timesheet\Timesheet.Api
+FILE: 2021-11-23 22:49:55.190 +03:00 [INF ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - -
+FILE: 2021-11-23 22:49:55.305 +03:00 [INF ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - - - 200 - text/html;charset=utf-8 119.1176ms
+FILE: 2021-11-23 22:49:55.548 +03:00 [INF ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - -
+FILE: 2021-11-23 22:49:56.731 +03:00 [INF ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36] HTTP GET /swagger/v1/swagger.json responded 200 in 1177.4973 ms
+FILE: 2021-11-23 22:49:56.735 +03:00 [INF ::1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - - - 200 - application/json;+charset=utf-8 1186.8503ms
+FILE: 2021-11-23 22:50:10.464 +03:00 [INF  ] Application is shutting down...
